@@ -2,14 +2,14 @@
 
     iptables.allow({
         protocol : 'tcp',
-        src : '10.1.1.5',
-        dport : 34567,
-        sudo : true
+        src : '192.168.1.5',
+        dport : 12345,
+        sudo : false
     });
 
     iptables.drop({
         protocol : 'tcp',
-        dport : 34567,
-        sudo : true
+        dport : 54321,
+        sudo : false
     });
 

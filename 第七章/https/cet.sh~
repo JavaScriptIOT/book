@@ -1,0 +1,10 @@
+openssl genrsa -out ./keys/ca-key.pem -des 1024
+openssl req -new -key ca-key.pem -out ./keys/ca-csr.pem
+openssl x509 -req -in ./keys/ca-csr.pem -signkey ./keys/ca-key.pem -out ./keys/ca-cert.pem
+openssl genrsa -out server-key.pem 1024
+openssl req -new -key server-key.pem -config openssl.cnf -out ./keys/server-csr.pem
+openssl x509 -req -CA ./keys/ca-cert.pem -CAkey ./keys/ca-key.pem -CAcreateserial -in server-csr.pem -out ./keys/server-cert.pem -extensions v3_req -extfile openssl.cnf
+openssl genrsa -out client-key.pem
+openssl req -new -key client-key.pem -out client-csr.pem
+openssl x509 -req -CA ca-cert.pem -CAkey ca-key.pem -CAcreateserial -in client-csr.pem -out ./keys/client-cert.pem
+
