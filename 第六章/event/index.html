@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function doSomething(obj, e) {
+        alert(obj.id);
+        e.stopPropagation();   //阻止冒泡，不再触发父元素事件
+    }
+</script>
+<head>
+</head>
+<body>
+    <div id="parent" onclick="alert(this.id)" style="width:250px;background-color:cyan;">
+        <p>这里是父图层</p>
+        <div id="child" onclick="doSomething(this,event);" style="width:200px;background-color:lightblue;">
+<!--除了向事件函数onclick传入当前元素对象还传入了事件对象event-->
+            <p>这里是子图层</p>
+        </div>
+        <p>这里是父图层</p>
+    </div>
+</body>
+</html>
