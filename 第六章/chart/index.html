@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.bootcss.com/Chart.js/2.6.0/Chart.min.js"></script>
+</head>
+<body>
+
+<canvas id="myChart" width="200" height="200"></canvas>
+<script>
+var ctx, myLineChart
+
+function load_chart() {
+    ctx = document.getElementById("myChart");
+    myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: []
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'linear',
+                    position: 'bottom'
+                }]
+            }
+        }
+    });
+
+}
+
+function plot(name, y, color) {
+    var data = [];
+    for (var i = 0; i < y.length; i++) {
+        data.push({
+            y: y[i],
+            x: i
+        })
+    }
+    dataset = {
+        label: name,
+        data: data,
+        fill: false,
+        borderColor: color,
+        lineTension: 0,
+    }
+    myLineChart.data.datasets.push(dataset);
+    myLineChart.update();
+}
+
+load_chart();
+plot("温度", [22.5,27.6,37,21,19,28.1,33.2], "rgba(0,0,192,1)");
+plot("湿度", [65, 59, 80, 81, 56, 55, 70], "rgba(75,192,192,1)");
+
+</script>
+</body>
+</html>
+
+
