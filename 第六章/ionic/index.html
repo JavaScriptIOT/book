@@ -1,0 +1,78 @@
+<html ng-app="ionicApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> 
+    <title>菜鸟教程(runoob.com)</title>
+    <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+    <style>
+    body {
+  	cursor: url('http://ionicframework.com/img/finger.png'), auto;
+    }
+    </style>
+	<script>
+	angular.module('ionicApp', ['ionic'])
+	.controller('AppCtrl', function($scope, $ionicModal) {
+         //创建网页视图的控制器
+	  $scope.contacts = [    //初始化
+	    { name: 'Gordon Freeman' },
+	    { name: 'Barney Calhoun' },
+	    { name: 'Lamarr the Headcrab' },
+	  ];
+	  $ionicModal.fromTemplateUrl('templates/modal.html', {
+	    scope: $scope     //创建ionic模态框
+	  }).then(function(modal) {
+	    $scope.modal = modal;
+	  });
+	  
+	  $scope.createContact = function(u) {  //相应添加列表项事件      
+	    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+	    $scope.modal.hide();                    //隐藏模态框
+	  };
+	});
+	</script>
+  </head>
+  <body ng-controller="AppCtrl"> <!-声明视图控制器>
+<ion-header-bar class="bar-positive"> <!-使用ionic 头条UI组件>
+      <h1 class="title">Contacts</h1>
+      <div class="buttons">
+        <button class="button button-icon ion-compose" ng-click="modal.show()">          <!-为按钮绑定Anguarjs事件，显示模态框>
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-content> 
+      <ion-list> <!-使用ionic 列表UI组件>
+        <ion-item ng-repeat="contact in contacts">
+        <!-利用Anguarjs重复指令进行数据展开，contacts中的每一个元素都会生成一段相同的HTML，这里显示一个contacts中没一个元素组成的列表>
+          {{contact.name}}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+<script id="templates/modal.html" type="text/ng-template">
+<!-定义模态框的模板>
+      <ion-modal-view> <!-使用ionic 模态框UI组件>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">New Contact</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First Name</span>
+              <input ng-model="newUser.firstName" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Last Name</span>
+              <input ng-model="newUser.lastName" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input ng-model="newUser.email" type="text">
+            </label>
+            <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+  </body>
+</html>
