@@ -52,9 +52,6 @@
                         step: 0.05
                     },
                     z: function (x, y) {
-                        if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) {
-                            return '-';
-                        }
                         return x*x + y*y;
                     }
                 }

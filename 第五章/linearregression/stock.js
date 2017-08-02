@@ -3,11 +3,11 @@
 
 var csvParse = require('csv-parse'),
     fs = require('fs'),
-    LinearRegression = require('../index').LinearRegression,
+    LinearRegression = require('shaman').LinearRegression,
     _ = require('underscore');
 
-var apiKey = process.env.PLOTLY_API_KEY;
-var username = process.env.PLOTLY_USERNAME;
+var apiKey = "6ko8gZthKiqAbUQH6IOn";
+var username = "lizhizhou";
 var plotly = require('plotly')(username,apiKey);
 
 fs.readFile('./stock.tsv', 'utf8', function(err, dataStr) {

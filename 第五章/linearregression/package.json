@@ -1,0 +1,29 @@
+{
+  "name": "linear_regression",
+  "description": "linear regression example",
+  "version": "0.0.1",
+  "keywords": [
+    "machine learning",
+    "linear regression"
+  ],
+  "homepage": "https://github.com/JavaScriptIOT/book",
+  "author": {
+    "name": "Zhizhou Li",
+    "email": "lizhizhou1983@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavaScriptIOT/book.git"
+  },
+  "main": "stock.js",
+  "dependencies": {
+    "sylvester": "0.0.21",
+    "underscore": "1.7.0",
+    "csv-parse": "0.0.6",
+    "plotly": "0.2.13",
+    "underscore": "1.7.0",
+    "sinon": "1.10.3",
+    "shaman": "*"
+  }
+}
