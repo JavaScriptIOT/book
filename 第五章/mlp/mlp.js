@@ -19,16 +19,23 @@ function Perceptron(input, hidden1, hidden2, output)
 		output: outputLayer
 	});
 }
-// extend the prototype chain
-Perceptron.prototype = new Network(); 将Perceptron作为Network的子对象
+
+Perceptron.prototype = new Network();
 Perceptron.prototype.constructor = Perceptron; 
-var myNetwork = new Perceptron(2, 3, 2, 1) 
-var trainer = new Trainer(myNetwork)        
+
+var Trainer= synaptic.Trainer; 
+var myPerceptron = new Perceptron(2, 3, 2, 1) 
+var trainer = new Trainer(myPerceptron)        
 var trainingSet = [                           
   {input: [0,0],output: [0]},
   {input: [0,1],output: [1]},
   {input: [1,0],output: [1]},
   {input: [1,1],output: [0]},
 ]
-trainer.train(trainingSet);                   
+trainer.train(trainingSet);    
+
+console.log(myPerceptron.activate([0,0])); 
+console.log(myPerceptron.activate([1,0])); 
+console.log(myPerceptron.activate([0,1]));
+console.log(myPerceptron.activate([1,1]));       
 
