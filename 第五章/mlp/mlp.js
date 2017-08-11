@@ -32,7 +32,11 @@ var trainingSet = [
   {input: [1,0],output: [1]},
   {input: [1,1],output: [0]},
 ]
-trainer.train(trainingSet);    
+trainer.train(trainingSet,{ 
+	rate: 0.1,
+	iterations: 2000000,
+	log: 1000}
+);      
 
 console.log(myPerceptron.activate([0,0])); 
 console.log(myPerceptron.activate([1,0])); 
