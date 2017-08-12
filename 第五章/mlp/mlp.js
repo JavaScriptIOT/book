@@ -34,7 +34,7 @@ var trainingSet = [
 ]
 trainer.train(trainingSet,{ 
 	rate: 0.1,
-	iterations: 2000000,
+	iterations: 200000,
 	log: 1000}
 );      
 
