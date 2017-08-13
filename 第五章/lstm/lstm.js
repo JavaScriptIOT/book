@@ -1,3 +1,12 @@
+
+// 5.3.3 递归神经网络物联网电压信号预测
+//   Synaptic
+// http://caza.la/synaptic/#/dsr
+// LSTM 时间序列预测温度
+// http://www.infoq.com/cn/news/2016/07/TensorFlow-LSTM
+// http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow.html
+
+
 var apiKey = "6ko8gZthKiqAbUQH6IOn";
 var username = "lizhizhou";
 var plotly = require('plotly')(username,apiKey),
