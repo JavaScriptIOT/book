@@ -1,0 +1,9 @@
+var tf = require('tensorflow2');
+var graph = tf.graph();
+var a = graph.placeholder(tf.dtype.float32，[2,1]);  
+var x = graph.constant([[1.1, 2.2]], tf.dtype.float32, [2, 1]);
+var w = graph.variable(x);
+var b = graph.constant([1.1], tf.dtype.float32, [1]);
+var t = graph.nn.softmax(graph.add(graph.matmul(w, a),b));
+var session = tf.session();
+var res = session.run(t); 
