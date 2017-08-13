@@ -18,6 +18,8 @@
   },
   "main": "lstm.js",
   "dependencies": {
-    "synaptic": "*"
+    "synaptic": "*",
+    "plotly": "*",
+    "underscore": "*"
   }
 }
