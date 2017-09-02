@@ -1,0 +1,12 @@
+[submodule "第一章/OpenFPGAduino"]
+	path = 第一章/OpenFPGAduino
+	url = https://github.com/OpenFPGAduino/OpenFPGAduino
+[submodule "第一章/iotjs"]
+	path = 第一章/iotjs
+	url = https://github.com/Samsung/iotjs
+[submodule "第一章/Espruino"]
+	path = 第一章/Espruino
+	url = https://github.com/espruino/Espruino
+[submodule "第一章/cylon"]
+	path = 第一章/cylon
+	url = https://github.com/hybridgroup/cylon
