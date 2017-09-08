@@ -19,3 +19,9 @@
 [submodule "第一章/video.js"]
 	path = 第一章/video.js
 	url = https://github.com/videojs/video.js
+[submodule "第一章/echarts"]
+	path = 第一章/echarts
+	url = https://github.com/ecomfe/echarts
+[submodule "第一章/plotly.js"]
+	path = 第一章/plotly.js
+	url = https://github.com/JavaScriptIOT/plotly.js
