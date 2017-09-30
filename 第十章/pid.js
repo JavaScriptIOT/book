@@ -1,4 +1,30 @@
-var y_n_1 = 0.0;
+function sht1x_get_moisture()
+{
+    return 70;
+}
+
+function sht1x_get_temperature()
+{
+    return 21.7;
+}
+
+function humidifier_on() {}
+function humidifier_off() {}
+function exhaust_on() {}
+function exhaust_off() {}
+function semi_cooler_on() {}
+function semi_cooler_off() {}
+function semi_warmer_regulating() {}
+function semi_cooler_regulating() {}
+function humidifier_regulating() {}
+function exhaust_regulating() {}
+
+var SHT1X_0 = 0;
+var SHT1X_1 = 1;
+var target_temperature = 29;
+var target_moisture = 80;
+var threshold = 0;
+
 function PID(x_n, x_n_1, x_n_2, Kp, Ki, Kd) {
     var y_n, A0, A1, A2;
     y_n = Kp * x_n + Ki * (x_n + x_n_1 + x_n_2) + Kd * (x_n + x_n_2 - 2 * x_n_1);
@@ -12,7 +38,7 @@ function moisture() {
     var error_d_d = 0;
 
     setInterval(function () {
-        moisture = fpga.sht1x_get_moisture(SHT1X_1);
+        moisture = sht1x_get_moisture(SHT1X_1);
         error_d_d = error_d;
         error_d = error;
         error = (target_moisture - moisture) / 100;
@@ -76,3 +102,6 @@ function temperature() {
         }
     }, 1000);
 };
+
+moisture()
+temperature()
