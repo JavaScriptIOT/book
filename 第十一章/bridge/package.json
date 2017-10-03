@@ -1,0 +1,27 @@
+{
+  "name": "MqttBroker",
+  "version": "0.1.0",
+  "description": "Mqtt Kafka bridge for opneFPGAduino",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenFPGAduino/iot.git"
+  },
+  "dependencies": {
+    "mosca": "2.0.0",
+    "mqtt": "2.0.0",
+    "kafka-node": "2.2.3"
+  },
+  "author": "Zhizhou Li",
+  "license": "GPL",
+  "readmeFilename": "README.md",
+  "devDependencies": {},
+  "keywords": [
+    "Mqtt",
+    "Kafka",
+    "node"
+  ]
+}
