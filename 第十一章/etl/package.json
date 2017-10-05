@@ -11,9 +11,8 @@
     "url": "https://github.com/OpenFPGAduino/iot.git"
   },
   "dependencies": {
-    "mosca": "2.0.0",
-    "mqtt": "2.0.0",
-    "kafka-node": "2.2.3"
+    "kafka-node": "2.2.3",
+    "jscache": "^0.5.4"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
