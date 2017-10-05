@@ -1,0 +1,25 @@
+﻿var sitemap = 
+{
+"rootNodes":[
+{
+"pageName":"welcome",
+"type":"Wireframe",
+"url":"welcome.html",
+"children":[
+{
+"pageName":"workspace",
+"type":"Wireframe",
+"url":"workspace.html",
+"children":[
+{
+"pageName":"sheet",
+"type":"Wireframe",
+"url":"sheet.html"}]},
+{
+"pageName":"setting",
+"type":"Wireframe",
+"url":"setting.html"},
+{
+"pageName":"adjustment",
+"type":"Wireframe",
+"url":"adjustment.html"}]}]};
