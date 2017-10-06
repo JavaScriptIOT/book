@@ -6,6 +6,18 @@ var session = spark.sql.SparkSession.builder()
       .getOrCreate();
 
 var file = '/usr/local/spark-2.0.2-bin-hadoop2.7/README.md';
+// https://www.codementor.io/agustinchiappeberrini/lazy-evaluation-and-javascript-a5m7g8gs3
+var lazy = function (creator) {
+  var res;
+  var processed = false;
+  return function () {
+    if (processed) return res;
+    res = creator.apply(this, arguments);
+    processed = true;
+    return res;
+  };
+};
+
 
 var textFile = session.read().textFile(file).rdd();
 
