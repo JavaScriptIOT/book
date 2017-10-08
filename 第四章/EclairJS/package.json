@@ -1,0 +1,25 @@
+{
+  "name": "wordcount",
+  "version": "0.1.0",
+  "description": "wordcount js for spark",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavaScriptIOT/book.git"
+  },
+  "dependencies": {
+    "eclairjs": "^0.10.2"
+  },
+  "author": "Zhizhou Li",
+  "license": "GPL",
+  "readmeFilename": "README.md",
+  "devDependencies": {},
+  "keywords": [
+    "Mqtt",
+    "Kafka",
+    "node"
+  ]
+}
