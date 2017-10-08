@@ -13,7 +13,8 @@
   "dependencies": {
     "eclairjs": "^0.10.2",
     "jscache": "^0.5.4",
-    "kafka-node": "2.2.3"
+    "kafka-node": "2.2.3",
+    "object-hash": "^1.1.8"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
