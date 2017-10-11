@@ -13,7 +13,9 @@
   "dependencies": {
     "eclairjs": "^0.10.2",
     "kafka-node": "2.2.3",
-    "lru-cache": "^4.1.1"
+    "lru-cache": "^4.1.1",
+    "node-grok": "^2.0.3",
+    "object-hash": "^1.1.8"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
