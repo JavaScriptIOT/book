@@ -1,0 +1,23 @@
+{
+  "name": "Endpoint",
+  "version": "0.1.0",
+  "description": "Endpoint for opneFPGAduino",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavaScriptIOT/book.git"
+  },
+  "dependencies": {
+    "skale": "^1.1.5"
+  },
+  "author": "Zhizhou Li",
+  "license": "GPL",
+  "readmeFilename": "README.md",
+  "devDependencies": {},
+  "keywords": [
+    "node"
+  ]
+}
