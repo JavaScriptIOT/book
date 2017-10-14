@@ -14,7 +14,8 @@
     "eclairjs": "^0.10.2",
     "jscache": "^0.5.4",
     "kafka-node": "2.2.3",
-    "object-hash": "^1.1.8"
+    "object-hash": "^1.1.8",
+    "skale-engine": "^0.7.2"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
