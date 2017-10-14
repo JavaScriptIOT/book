@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "eclairjs": "^0.10.2",
-    "jscache": "^0.5.4",
     "kafka-node": "2.2.3",
+    "skale-engine": "^0.7.2",
+    "lru-cache": "^4.1.1",
+    "node-grok": "^2.0.3",
     "object-hash": "^1.1.8",
-    "skale-engine": "^0.7.2"
+    "elasticsearch": "13.3.1"
   },
   "author": "Zhizhou Li",
   "license": "GPL",

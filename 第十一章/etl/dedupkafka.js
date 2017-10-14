@@ -1,0 +1,47 @@
+var LRU = require("lru-cache")
+, options = { max: 500
+			, length: function (n, key) { return n * 2 + key.length }
+			, dispose: function (key, n) { n.close() }
+			, maxAge: 1000 * 60 * 60 }
+, cache = LRU(options)
+, otherCache = LRU(50) // sets just the max size
+var hash  = require('object-hash');
+var kafka = require('kafka-node'),
+HighLevelConsumer = kafka.HighLevelConsumer,
+client = new kafka.Client();
+HighLevelProducer = kafka.HighLevelProducer,
+producer = new HighLevelProducer(client);
+
+var consumer = new HighLevelConsumer(
+	client,
+	[
+		{ topic: 'messages' }
+	],
+	{
+		groupId: "debupkafka",
+		autoCommit: true,
+		autoCommitIntervalMs: 5000
+	}
+);
+
+consumer.on('message', function (kafkaMessage) {
+	console.log('Received key ' + kafkaMessage.key);
+	console.log('Received message ' + kafkaMessage.value);
+	var message = JSON.parse(kafkaMessage.value);
+	var key = hash(message);
+	if (cache.get(key)) {
+		return;
+	} else {
+		cache.set(key, message)
+		var kafkaMessage = {
+			topic: 'dedupmessages',
+			messages : messageString
+		};
+
+		producer.send([kafkaMessage], function (err, data) {
+			if(err) {
+				console.log('Error sending data ' + err);
+			}
+		});
+	}
+});
