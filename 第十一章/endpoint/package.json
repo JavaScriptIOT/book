@@ -11,6 +11,7 @@
     "url": "https://github.com/JavaScriptIOT/book.git"
   },
   "dependencies": {
+    "node-logstash": "0.0.5",
     "skale": "^1.1.5"
   },
   "author": "Zhizhou Li",
