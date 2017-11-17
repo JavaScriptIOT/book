@@ -44,3 +44,15 @@ dga = function() {
 }; 
 
 console.log(dga())
+
+var apiKey = "6ko8gZthKiqAbUQH6IOn";
+var username = "lizhizhou";
+var plotly = require('plotly')(username,apiKey),
+    _ = require('underscore');
+var synaptic = require('synaptic');
+var Neuron = synaptic.Neuron,
+	Layer = synaptic.Layer,
+	Network = synaptic.Network,
+	Trainer = synaptic.Trainer,
+	Architect = synaptic.Architect;
+
