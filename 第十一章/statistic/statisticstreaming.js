@@ -44,22 +44,57 @@ var wordCounts = words.mapToPair(function (s, Tuple2) {
       return i1 + i2;
 });
 
+function timeWindow(timeStirng, window) {
+      var date = new Date(timeStirng);
+      date.setTime(date.getTime() - date.getTime() % window)
+      return date.toString()
+}
+
 wordCounts.foreachRDD(function (rdd) {
       return rdd.collect()
 }, null, function (res) {
-      console.log('Results: ', res)
-      client.update({
-            index: 'myindex',
-            type: 'mytype',
-            id: '1',
-            body: {
-                  doc: {
-                        title: 'Updated'
-                  }
-            }
+      console.log('Statistic: ', res)
+      var id = 1;
+      var index = 'stastic';
+      var type = 'log'
+      var count = 4;
+      client.get({
+            index: index,
+            type: type,
+            id: id
       }, function (error, response) {
+            if (!error) {
+                  esclient.update({
+                        index: index,
+                        type: type,
+                        id: id,
+                        body: {
+                              "script": {
+                                    "source": "ctx._source.counter += params.count",
+                                    "lang": "painless",
+                                    "params": {
+                                          "count": count
+                                    }
+                              }
+                        }
+                  }, function (error, response) {
 
-      })
+                  })
+            } else {
+                  client.index({
+                        index: index,
+                        type: type,
+                        id: id,
+                        body: {
+                              counter: count,
+                        }
+                  }, function (error, response) {
+
+                  });
+            }
+      });
+
+
 }).then(function () {
       ssc.start();
 }).catch(stop);
