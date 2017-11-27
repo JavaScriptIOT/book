@@ -13,8 +13,7 @@
   "dependencies": {
     "kafka-node": "2.2.3",
     "mosca": "2.0.0",
-    "mqtt": "2.0.0",
-    "node-logstash": "0.0.5"
+    "mqtt": "2.0.0"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
