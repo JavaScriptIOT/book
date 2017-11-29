@@ -19,3 +19,4 @@ q.push(2)
 q.push(3)
 q.push(4)
 console.log(q.queue)
+

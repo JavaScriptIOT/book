@@ -11,7 +11,8 @@
     "url": "https://github.com/OpenFPGAduino/iot.git"
   },
   "dependencies": {
-    "node-alert": "^0.1.1"
+    "node-alert": "^0.1.1",
+    "mathjs": "^3.17.0"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
