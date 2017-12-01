@@ -1,18 +1,19 @@
 var alert = require('node-alert')({
-  plugins : {
-    mail : {
-      nodemailer : {
-        port : 25,
-        host : "smtp.myserver.com",
-        auth : {
-          user : "myname@myserver.com",
-          pass : "mypass"
-      },
-      message   : {
-        addressed_to : "node-alert maintainer",
-        serviceName : "Node-Alert test"
+  plugins: {
+    mail: {
+      nodemailer: {
+        port: 25,
+        host: "smtp.myserver.com",
+        auth: {
+          user: "myname@myserver.com",
+          pass: "mypass"
+        },
+        message: {
+          addressed_to: "node-alert maintainer",
+          serviceName: "Node-Alert test"
+        }
       }
-    } 
+    }
   }
 });
 var cron = require('cron').CronJob;
@@ -22,24 +23,24 @@ var client = new elasticsearch.Client({
   log: 'info'
 });
 
-new cron('* * * * * *', function() {
-client.search({
-  index: 'myindex',     
-  body: {
-    query: {
-      match: {                  
-        title: 'test'          
+new cron('0 * * * * *', function () {
+  client.search({
+    index: 'myindex',
+    body: {
+      query: {
+        match: {
+          title: 'test'
+        }
       }
     }
- }
-}, function (error, response) {
-	alert.alertMail(new Error('Test Error'), function(err, info) {
-	  if (err) console.log(err);
-	  else console.log('Success!');
-	});
-});
-
-	 
+  }, function (error, response) {
+    if (response.ctx.payload.hits.total > 10)
+      alert.alertMail(new Error('There are ' + response.ctx.payload.hits.total +
+        ' documents in your index. Threshold is 10'), function (err, info) {
+          if (err) console.log(err);
+          else console.log('Success!');
+        });
+  });
 }, null, true, 'America/Los_Angeles');
 
 
