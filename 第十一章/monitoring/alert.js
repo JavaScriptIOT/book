@@ -25,12 +25,10 @@ var client = new elasticsearch.Client({
 
 new cron('0 * * * * *', function () {
   client.search({
-    index: 'myindex',
+    index: 'iot',
     body: {
       query: {
-        match: {
-          title: 'test'
-        }
+        match_all: {}
       }
     }
   }, function (error, response) {
@@ -41,6 +39,6 @@ new cron('0 * * * * *', function () {
           else console.log('Success!');
         });
   });
-}, null, true, 'America/Los_Angeles');
+}, null, true, 'Asia/Shanghai');
 
 
