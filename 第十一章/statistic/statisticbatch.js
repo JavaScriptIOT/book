@@ -6,14 +6,19 @@ var session = spark.sql.SparkSession.builder()
       .getOrCreate();
 
 var file = '/usr/local/spark-2.0.2-bin-hadoop2.7/README.md';
-// https://www.codementor.io/agustinchiappeberrini/lazy-evaluation-and-javascript-a5m7g8gs3
 
 var textFile = session.read().textFile(file).rdd();
 
+function timeWindow(timeStirng, window) {
+      var date = new Date(timeStirng);
+      date.setTime(date.getTime() - date.getTime() % window)
+      return date.toString()
+}
 var data = textFile.flatMap(function (sentence) {
       return sentence.split("\n");
-
-});
+}).map( function (timeString) {
+      return timeWindow(timeStirng,100) 
+})
 
 var dataWithhash = data.mapToPair(function (timestamp, Tuple2) {
       return new Tuple2(timestamp, 1);
@@ -41,7 +46,6 @@ function stop(e) {
       if (e) {
             console.log('Error:', e);
       }
-
       if (session) {
             session.stop().then(exit).catch(exit);
       }
