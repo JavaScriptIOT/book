@@ -48,19 +48,28 @@ function AnormalDetection(size, lamda, delta, threshold) {
 }
 
 AnormalDetection.prototype.detection = function (input) {
-    var x =   math.math.matrix(this.queue.queue);
+    var x =   math.matrix(this.queue.queue);
     var out = this.queue.push(input);
     if(out != null) {
         est = this.rls.estimate(x)
         var error = this.rls.update(x, input);
-        if (math.abs(error) > this.threshold) console.log("Anormal found")
+        if (math.abs(error) > this.threshold) console.log("Anormal found the input is " + input)
     }
 }
 
+function unittest() {
+    var q = new FinitQueue(2)
+    q.push(1)
+    q.push(2)
+    q.push(3)
+    q.push(4)
+    console.log(q.queue)
 
-// var q = new finitQueue(2)
-// q.push(1)
-// q.push(2)
-// q.push(3)
-// q.push(4)
-// console.log(q.queue)
+    var x = [1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1]
+    var detection = new AnormalDetection(5,0.1,0.1,0.5)
+    x.forEach(function(v) {
+        detection.detection(v)
+    })
+}
+
+unittest()
