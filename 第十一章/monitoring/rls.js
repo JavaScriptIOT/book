@@ -20,7 +20,7 @@ function RLS(size, lamda, delta) {
     this.size = size;
     this.lamda = lamda;
     this.delta = delta;
-    this.w = new Array(size);
+    this.w = math.zeros(size);
     this.P = math.multiply(math.eye(size), 1.0 / delta);
 }
 
@@ -30,10 +30,10 @@ RLS.prototype.init = function (w0, P0) {
 }
 
 RLS.prototype.update = function (x, d) {
-    var alpha = d -  math.multiply((math.transpose(x),this.w));
-    var g = math.multiply(math.multiply(this.P, x), 1 / (lamda +  math.multiply(math.multiply((math.transpose(x),this.P)), x)));
-    this.P = math.multiply(math.subtract(this.P, math.multiply(math.multiply((g, math.transpose(x))),this.P)),1/lamda); 
-    this.w = math.add(w,math.multiply(alpha,g)); 
+    var alpha = d -  math.multiply(math.transpose(x),this.w);
+    var g = math.multiply(math.multiply(this.P, x), 1 / (this.lamda +  math.multiply(math.multiply(math.transpose(x),this.P), x)));
+    this.P = math.multiply(math.subtract(this.P, math.multiply(math.multiply(g, math.transpose(x)),this.P)),1/this.lamda); 
+    this.w = math.add(this.w,math.multiply(alpha,g)); 
     return alpha;
 }
 
@@ -65,10 +65,11 @@ function unittest() {
     q.push(4)
     console.log(q.queue)
 
-    var x = [1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1]
+    var x =  math.ones(20)
+    x.subset(math.index(18),20);
     var detection = new AnormalDetection(5,0.1,0.1,0.5)
-    x.forEach(function(v) {
-        detection.detection(v)
+    x.forEach(function(value, index, matrix) {
+        detection.detection(value)
     })
 }
 
