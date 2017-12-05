@@ -14,7 +14,8 @@
     "cron": "^1.3.0",
     "elasticsearch": "13.3.1",
     "mathjs": "^3.17.0",
-    "node-alert": "^0.1.1"
+    "node-alert": "^0.1.1",
+    "node-grok": "^2.0.3"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
