@@ -42,6 +42,7 @@ RLS.prototype.estimate = function (x) {
 }
 
 function AnormalDetection(size, lamda, delta, threshold) {
+    this.delay = size;
     this.queue = new FinitQueue(size);
     this.rls   = new RLS(size,lamda,delta);
     this.threshold = threshold;
@@ -51,9 +52,10 @@ AnormalDetection.prototype.detection = function (input) {
     var x =   math.matrix(this.queue.queue);
     var out = this.queue.push(input);
     if(out != null) {
+        this.delay--
         est = this.rls.estimate(x)
         var error = this.rls.update(x, input);
-        if (math.abs(error) > this.threshold) console.log("Anormal found the input is " + input)
+        if (this.delay < 0 && math.abs(error) > this.threshold) console.log("Anormal found the input is " + input)
     }
 }
 
@@ -66,7 +68,7 @@ function unittest() {
     console.log(q.queue)
 
     var x =  math.ones(20)
-    x.subset(math.index(18),20);
+    x.subset(math.index(19),20);
     var detection = new AnormalDetection(5,0.1,0.1,0.5)
     x.forEach(function(value, index, matrix) {
         detection.detection(value)
