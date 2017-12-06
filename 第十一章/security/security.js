@@ -55,6 +55,11 @@ var model = new KerasJS.Model({
       filesystem: true
 
 })
+
+var dict = require("dict.json")
+
+console.log(dict);
+
 //model.ready()
 //    .then(() => {
             // input data object keyed by names of the input layers
