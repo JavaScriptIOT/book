@@ -56,33 +56,39 @@ var model = new KerasJS.Model({
 
 })
 
-var dict = require("dict.json")
+var dict = require("./dict.json")
+var maxlen = 51
 
-console.log(dict);
+var testdata = [
+    "google.com",
+    //dga()
+    "12dfdf12.com"
+]
 
-//model.ready()
-//    .then(() => {
-            // input data object keyed by names of the input layers
-        //     // or `input` for Sequential models
-        //         // values are the flattened Float32Array data
-        //             // (input tensor shapes are specified in the model config)
-        //                 const inputData = {
-//              'input_1': new Float32Array(data)
-//            }
+var feeddata = testdata.map(function (x) {
+    return x.split(".")[0]
+        .split("").
+        map(function (c) {
+        return dict[c]
+    })
+}).map (function(x) {
+        var padSize = Math.max(0, maxlen - x.length);
+        var zeroArray = Array.apply(null,Array(padSize)).map(function (v, i) {return 0})
+        return zeroArray.concat(x)
+})
 
-            // make predictions
-        //     return model.predict(inputData)
-        //       })
-        //         .then(outputData => {
-            // outputData is an object keyed by names of the output layers
-        //     // or `output` for Sequential models
-        //         // e.g.,
-        //             // outputData['fc1000']
-        //               })
-        //                 .catch(err => {
-            // handle error
-        //   })
-        //                 })
-        //         })
-        //                 }
-//    })
+console.log(feeddata)
+
+model.ready()
+  .then(function () {
+    var inputData = {
+      input : new Float32Array(feeddata[0])
+    }
+    return model.predict(inputData)
+  })
+  .then(function (outputData) {
+    console.log(outputData)
+  })
+  .catch(function (err) {
+    console.log(err)
+  })
