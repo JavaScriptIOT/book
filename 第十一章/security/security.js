@@ -43,7 +43,7 @@ dga = function() {
     return shuffle_list(dga_domains);
 };
 
-console.log(dga())
+//console.log(dga())
 
 var KerasJS = require('keras-js')
 var model = new KerasJS.Model({
@@ -57,13 +57,9 @@ var model = new KerasJS.Model({
 })
 
 var dict = require("./dict.json")
-var maxlen = 51
+var maxlen = 38
 
-var testdata = [
-    "google.com",
-    //dga()
-    "12dfdf12.com"
-]
+var testdata = Array.apply(null,Array(128)).map(function (v, i) {return "google.com"})
 
 var feeddata = testdata.map(function (x) {
     return x.split(".")[0]
@@ -75,9 +71,9 @@ var feeddata = testdata.map(function (x) {
         var padSize = Math.max(0, maxlen - x.length);
         var zeroArray = Array.apply(null,Array(padSize)).map(function (v, i) {return 0})
         return zeroArray.concat(x)
-})
+})//.reduce(function(x, y) { return x.concat(y)})
 
-console.log(feeddata)
+console.log(new Float32Array(feeddata[0]).length)
 
 model.ready()
   .then(function () {
