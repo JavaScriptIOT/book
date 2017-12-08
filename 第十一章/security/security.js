@@ -52,7 +52,8 @@ var model = new KerasJS.Model({
             weights: './model_weights.buf',
             metadata: './model_metadata.json'
     },
-      filesystem: true
+      filesystem: true,
+      gpu: false
 })
 
 var dict = require("./dict.json")
