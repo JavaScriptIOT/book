@@ -1,23 +1,20 @@
 var eclairjs = require('eclairjs');
 var spark = new eclairjs();
 
-var sc = new spark.SparkContext("local[*]", "Statistic batch");
+var session = spark.sql.SparkSession.builder()
+      .appName("Statistic batch")
+      .getOrCreate();
 
-var event = [
-      "2017-07-15T12:42:04+11:00",
-      "2017-07-15T12:42:04+12:00",
-      "2017-07-15T12:42:04+13:00",
-      "2017-07-15T12:42:04+14:00",
-      "2017-07-15T12:42:04+15:00",
-      "2017-07-16T12:42:04+15:00",
-      "2017-07-16T12:42:04+15:00",
-      "2017-07-16T12:42:04+15:00",
-      "2017-07-16T12:42:04+15:00"
-]
+var file = '/mnt/event';
 
-var eventRDD = sc.parallelize(event);
+var textFile = session.read().textFile(file).rdd();
 
-var data = eventRDD
+var data = textFile.flatMap(function (sentence) {
+      return sentence.split("\n");
+
+});
+
+var time = data
 .map(function (timeString) {
       function timeWindow(timeString, window) {
             var date = new Date(timeString);
@@ -27,7 +24,7 @@ var data = eventRDD
       return timeWindow(timeString, 20000)
 })
 
- var dataPair = data.mapToPair(function (time, Tuple2) {
+ var dataPair = time.mapToPair(function (time, Tuple2) {
        return new Tuple2(time, 1);
  }, [spark.Tuple2]);
 
@@ -39,5 +36,5 @@ var result = reduced.map(function (pair) { return {time:pair._1(), statistic: pa
 
 result.collect().then(function (results) {
       console.log('Statistic results:', results);
-      sc.stop();
+      session.stop();
 });

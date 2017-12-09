@@ -5,7 +5,7 @@ var session = spark.sql.SparkSession.builder()
       .appName("Remove duplcation")
       .getOrCreate();
 
-var file = '/usr/local/spark-2.0.2-bin-hadoop2.7/README.md';
+var file = '/mnt/event';
 // https://www.codementor.io/agustinchiappeberrini/lazy-evaluation-and-javascript-a5m7g8gs3
 var lazy = function (creator) {
   var res;
