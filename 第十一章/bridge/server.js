@@ -59,7 +59,7 @@ consumer.on('message', function (kafkaMessage) {
 	var message = kafkaMessage.value;
 	var key = kafkaMessage.key
 	console.log('Received in kafka')
-	console.log('Received mqtt topic ' + kafkaMessage.key);
+	console.log('Received mqtt topic ' + key);
 	console.log('Received mqtt message ' + message);
     client.subscribe(key)
     client.publish(key, message)
