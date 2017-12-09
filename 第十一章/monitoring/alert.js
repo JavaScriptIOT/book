@@ -1,22 +1,20 @@
-var alert = require('node-alert')({
-  plugins: {
-    mail: {
-      nodemailer: {
-        port: 25,
-        host: "smtp.myserver.com",
-        auth: {
-          user: "myname@myserver.com",
-          pass: "mypass"
-        },
-        message: {
-          addressed_to: "node-alert maintainer",
-          serviceName: "Node-Alert test"
-        }
-      }
-    }
-  }
-});
 var cron = require('cron').CronJob;
+var log4js = require('log4js');
+var config = {
+  "appenders": [  
+    { "type": "console" },  
+    { "type": "file", "filename": "server.log",  "category": "server" },
+        { "type": "dateFile", "filename": "history.log",  
+    "layout": {"type":"basic"},"pattern": ".yyyy-MM-dd",   
+    "alwaysIncludePattern": true, "category": "server" }
+  ],  
+  "levels": {  
+    "server": "INFO"  
+  }
+}
+
+log4js.configure({appenders:config.appenders,levels:config.levels});  
+var logger = log4js.getLogger('server');
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
@@ -33,11 +31,8 @@ new cron('0 * * * * *', function () {
     }
   }, function (error, response) {
     if (response.ctx.payload.hits.total > 10)
-      alert.alertMail(new Error('There are ' + response.ctx.payload.hits.total +
-        ' documents in your index. Threshold is 10'), function (err, info) {
-          if (err) console.log(err);
-          else console.log('Success!');
-        });
+    logger.info('There are ' + response.ctx.payload.hits.total +
+        ' documents in your index. Threshold is 10')
   });
 }, null, true, 'Asia/Shanghai');
 
