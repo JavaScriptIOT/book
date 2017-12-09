@@ -29,13 +29,13 @@ function linspace(start, step, stop)
   return data;
 }
 
-var myNetwork = new Architect.LSTM(1, 5, 1)
+var myNetwork = new Architect.LSTM(1,4,4,4,1)
 var trainer = new Trainer(myNetwork)
 
 var x = linspace(0,0.1,2)
 
 
-var y = x.map(function(x) { return Math.sin(x); }); 
+var y = x.map(function(x) { return Math.abs(x); }); 
 
 
 var trainingSet = x.map(function(x) { return {input:[x], output:[Math.sin(x)]}; }); 
