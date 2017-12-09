@@ -19,12 +19,9 @@ function setup() {
 }
 
 client.on('connect', function () {
-	client.subscribe('presence')
-	client.publish('presence', 'Hello mqtt')
+	client.subscribe('iot')
+	client.publish('iot', 'Hello mqtt')
 })
-
-// client.on('close', function () {
-// })
 
  client.on('error', function (error) {
  	console.log(error)
