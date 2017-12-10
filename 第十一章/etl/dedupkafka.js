@@ -1,7 +1,5 @@
 var LRU = require("lru-cache")
 , options = { max: 500
-			, length: function (n, key) { return n * 2 + key.length }
-			, dispose: function (key, n) { n.close() }
 			, maxAge: 1000 * 60 * 60 }
 , cache = LRU(options)
 , otherCache = LRU(50) // sets just the max size
@@ -28,14 +26,14 @@ consumer.on('message', function (kafkaMessage) {
 	console.log('Received key ' + kafkaMessage.key);
 	console.log('Received message ' + kafkaMessage.value);
 	var message = JSON.parse(kafkaMessage.value);
-	var key = hash(message);
+	var key = hash(message.toString());
 	if (cache.get(key)) {
 		return;
 	} else {
 		cache.set(key, message)
 		var kafkaMessage = {
 			topic: 'dedupmessages',
-			messages : messageString
+			messages : message
 		};
 
 		producer.send([kafkaMessage], function (err, data) {
