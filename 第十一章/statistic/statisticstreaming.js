@@ -1,69 +1,49 @@
 
-function exit() {
-      process.exit(0);
-}
-
-function stop(e) {
-      if (e) {
-            console.log('Error:', e);
-      }
-
-      if (sparkContext) {
-            sparkContext.stop().then(exit).catch(exit);
-      }
-}
-
-var kafkaHost = 'localhost:9092';
-var topic = 'dedupmessages';
-
+var kafka = require('kafka-node'),
+      HighLevelConsumer = kafka.HighLevelConsumer,
+      client = new kafka.Client();
+var hash = require('object-hash');
 var elasticsearch = require('elasticsearch');
 var esclient = new elasticsearch.Client({
       host: 'localhost:9200',
       log: 'info'
 });
 
-var eclairjs = require('eclairjs');
-var spark = new eclairjs();
+HighLevelConsumer = kafka.HighLevelConsumer,
+      kafkaclient = new kafka.Client();
 
-var sparkContext = new spark.SparkContext("local[*]", "Statistic Streaming");
-var ssc = new spark.streaming.StreamingContext(sparkContext, new spark.streaming.Duration(2000));
+var consumer = new HighLevelConsumer(
+      kafkaclient,
+      [
+            { topic: 'messages' }
+      ],
+      {
+            groupId: "statisticstreaming",
+            autoCommit: true,
+            autoCommitIntervalMs: 5000
+      }
+);
 
-var messages = spark.streaming.kafka.KafkaUtils.createStream(ssc, "wordcount", kafkaHost, topic);
-
-var lines = messages.map(function (tuple2) {
-      return tuple2._2();
-});
-
-var words = lines.flatMap(function (x) {
-      return x.split(/\s+/);
-});
-
-var wordCounts = words.mapToPair(function (s, Tuple2) {
-      return new Tuple2(s, 1);
-}, [spark.Tuple2]).reduceByKey(function (i1, i2) {
-      return i1 + i2;
-});
-
-function timeWindow(timeStirng, window) {
-      var date = new Date(timeStirng);
+function timeWindow(timeString, window) {
+      var date = new Date(timeString);
       date.setTime(date.getTime() - date.getTime() % window)
       return date.toString()
 }
 
-wordCounts.foreachRDD(function (rdd) {
-      return rdd.collect()
-}, null, function (res) {
-      console.log('Statistic: ', res)
-      var id = 1;
-      var index = 'stastic';
+consumer.on('message', function (kafkaMessage) {
+      console.log('Received key ' + kafkaMessage.key);
+      console.log('Received message ' + kafkaMessage.value);
+      var message = kafkaMessage.value;
+      var id = 5 //timeWindow(message);
+      var index = 'statistic';
       var type = 'log'
-      var count = 4;
-      client.get({
+      var count = 1;
+      esclient.exists({
             index: index,
             type: type,
             id: id
-      }, function (error, response) {
-            if (!error) {
+      }, function (error, exists) {
+            if (exists === true) {
                   esclient.update({
                         index: index,
                         type: type,
@@ -78,10 +58,10 @@ wordCounts.foreachRDD(function (rdd) {
                               }
                         }
                   }, function (error, response) {
-
+                        console.log(response)
                   })
             } else {
-                  client.index({
+                  esclient.index({
                         index: index,
                         type: type,
                         id: id,
@@ -89,15 +69,8 @@ wordCounts.foreachRDD(function (rdd) {
                               counter: count,
                         }
                   }, function (error, response) {
-
+                        console.log(response)
                   });
             }
       });
-
-
-}).then(function () {
-      ssc.start();
-}).catch(stop);
-
-// stop spark streaming when we stop the node program
-process.on('SIGTERM', stop);
+});
