@@ -25,7 +25,7 @@ var consumer = new HighLevelConsumer(
 consumer.on('message', function (kafkaMessage) {
 	console.log('Received key ' + kafkaMessage.key);
 	console.log('Received message ' + kafkaMessage.value);
-	var message = JSON.parse(kafkaMessage.value);
+	var message = kafkaMessage.value;
 	var key = hash(message.toString());
 	if (cache.get(key)) {
 		return;
