@@ -34,7 +34,7 @@ consumer.on('message', function (kafkaMessage) {
       console.log('Received key ' + kafkaMessage.key);
       console.log('Received message ' + kafkaMessage.value);
       var message = kafkaMessage.value;
-      var id = 5 //timeWindow(message);
+      var id = timeWindow(message, 1000);
       var index = 'statistic';
       var type = 'log'
       var count = 1;
