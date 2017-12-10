@@ -1,9 +1,16 @@
 var cron = require('cron').CronJob;
 var log4js = require('log4js');
 log4js.configure({
-  appenders: { 'file': { type: 'file', filename: 'server.log' },
-               'console': { type: 'stdout' } },
-  categories: { default: { appenders: ['file','console'], level: 'error' } }
+  appenders: {
+    'file': { type: 'file', filename: 'server.log' },
+    'console': { type: 'stdout' }
+  },
+  categories: {
+    default: {
+      appenders: ['file', 'console'],
+      level: 'error'
+    }
+  }
 });
 var logger = log4js.getLogger();
 var elasticsearch = require('elasticsearch');
@@ -12,7 +19,7 @@ var client = new elasticsearch.Client({
   log: 'info'
 });
 
-new cron('* * * * * *', function () {
+new cron('0 * * * * *', function () {
   client.search({
     index: 'iot',
     body: {
