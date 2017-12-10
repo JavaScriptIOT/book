@@ -1,19 +1,9 @@
 var cron = require('cron').CronJob;
 var log4js = require('log4js');
-var config = {
-  "appenders": [  
-    { "type": "console" },  
-    { "type": "file", "filename": "server.log",  "category": "server" },
-        { "type": "dateFile", "filename": "history.log",  
-    "layout": {"type":"basic"},"pattern": ".yyyy-MM-dd",   
-    "alwaysIncludePattern": true, "category": "server" }
-  ],  
-  "levels": {  
-    "server": "INFO"  
-  }
-}
-
-log4js.configure({appenders:config.appenders,levels:config.levels});  
+log4js.configure({
+  appenders: { server: { type: 'file', filename: 'server.log' } },
+  categories: { default: { appenders: ['server'], level: 'error' } }
+});
 var logger = log4js.getLogger('server');
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
@@ -31,7 +21,7 @@ new cron('0 * * * * *', function () {
     }
   }, function (error, response) {
     if (response.ctx.payload.hits.total > 10)
-    logger.info('There are ' + response.ctx.payload.hits.total +
+    logger.error('There are ' + response.ctx.payload.hits.total +
         ' documents in your index. Threshold is 10')
   });
 }, null, true, 'Asia/Shanghai');
