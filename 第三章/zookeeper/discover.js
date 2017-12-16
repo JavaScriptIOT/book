@@ -1,13 +1,13 @@
 var zookeeper = require('node-zookeeper-client');
 var client = zookeeper.createClient('localhost:2181');
 var path = '/';
-function listChildren(client, path) {             //从根目录开始发现所有服务
+function listChildren(client, path) {             
 
     client.getChildren(
         path,
         function (event) {
             console.log('Got watcher event: %s', event);
-            listChildren(client, path);             //递归遍历所有子节点完成服务发现
+            listChildren(client, path);             
         },
         function (error, children, stat) {
             if (error) {
@@ -22,8 +22,8 @@ function listChildren(client, path) {             //从根目录开始发现所�
         }
     );
 }
-client.once('connected', function () {      //当连接上Zookeeper后，开始服务发现
+client.once('connected', function () {      
     console.log('Connected to ZooKeeper.');
     listChildren(client, path);
 });
-client.connect();                               //尝试连接
+client.connect();                               
