@@ -25,3 +25,6 @@
 [submodule "第一章/plotly.js"]
 	path = 第一章/plotly.js
 	url = https://github.com/JavaScriptIOT/plotly.js
+[submodule "第八章/Arduinojs"]
+	path = 第八章/Arduinojs
+	url = https://github.com/JavaScriptIOT/Arduinojs.git
