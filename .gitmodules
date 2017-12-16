@@ -82,3 +82,9 @@
 [submodule "第一章/node-tensorflow"]
 	path = 第一章/node-tensorflow
 	url = https://github.com/node-tensorflow/node-tensorflow
+[submodule "第一章/keras-js"]
+	path = 第一章/keras-js
+	url = https://github.com/transcranial/keras-js
+[submodule "第一章/deeplearnjs"]
+	path = 第一章/deeplearnjs
+	url = https://github.com/PAIR-code/deeplearnjs
