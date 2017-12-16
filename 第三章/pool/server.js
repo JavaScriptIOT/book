@@ -4,9 +4,9 @@ var pool = new Pool({
     name     : 'mysql',
     create   : function(callback) {
         var c = mysql.createConnection({
-                user: 'scott',
-                password: 'tiger',
-                database:'mydb'
+                user: 'root',
+                password: 'lab123',
+                database:'iotdb'
         })
 
         // parameter order: err, resource
@@ -31,6 +31,6 @@ pool.acquire(function(err, client) {
     }
 });
 
-pool.pool.drain(function() {
+pool.drain(function() {
     pool.destroyAllNow();
 });
