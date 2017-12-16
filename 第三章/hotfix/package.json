@@ -1,0 +1,23 @@
+{
+  "name": "time",
+  "version": "0.1.0",
+  "description": "time measure",
+  "main": "time.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavaScriptIOT/book.git"
+  },
+  "dependencies": {
+    "express": "4.7.0"
+  },
+  "author": "Zhizhou Li",
+  "license": "GPL",
+  "readmeFilename": "README.md",
+  "devDependencies": {},
+  "keywords": [
+    "node"
+  ]
+}
