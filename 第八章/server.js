@@ -5,7 +5,7 @@ var loadDir = require('./loaddir');
 var module = loadDir(config.app_path);    
 
 app.set("etag", false);           
-app.use(bodyParser.urlencoded({ /
+app.use(bodyParser.urlencoded({ 
     extended: true
 }));
 app.use(bodyParser.json()); 
