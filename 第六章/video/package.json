@@ -1,0 +1,23 @@
+{
+  "name": "videotest",
+  "description": "video example",
+  "version": "0.0.1",
+  "keywords": [
+    "html5",
+    "video"
+  ],
+  "homepage": "https://github.com/JavaScriptIOT/book",
+  "author": {
+    "name": "Zhizhou Li",
+    "email": "lizhizhou1983@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavaScriptIOT/book.git"
+  },
+  "main": "livecam.js",
+  "dependencies": {
+    "livecam": "0.2.0"
+  }
+}

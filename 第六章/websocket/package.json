@@ -1,0 +1,23 @@
+{
+  "name": "websocketmqtt",
+  "description": "websocket mqtt client",
+  "version": "0.0.1",
+  "keywords": [
+    "html5",
+    "video"
+  ],
+  "homepage": "https://github.com/JavaScriptIOT/book",
+  "author": {
+    "name": "Zhizhou Li",
+    "email": "lizhizhou1983@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavaScriptIOT/book.git"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "livecam": "0.2.0"
+  }
+}
