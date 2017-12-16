@@ -88,3 +88,12 @@
 [submodule "第一章/deeplearnjs"]
 	path = 第一章/deeplearnjs
 	url = https://github.com/PAIR-code/deeplearnjs
+[submodule "第九章/cloud"]
+	path = 第九章/cloud
+	url = https://github.com/OpenFPGAduino/cloud.git
+[submodule "第九章/Arduinojs"]
+	path = 第九章/Arduinojs
+	url = https://github.com/OpenFPGAduino/Arduinojs.git
+[submodule "第九章/BlocklyIDE"]
+	path = 第九章/BlocklyIDE
+	url = https://github.com/OpenFPGAduino/BlocklyIDE.git
