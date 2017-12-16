@@ -28,3 +28,12 @@
 [submodule "第八章/Arduinojs"]
 	path = 第八章/Arduinojs
 	url = https://github.com/JavaScriptIOT/Arduinojs.git
+[submodule "第五章/flappybird-ql"]
+	path = 第五章/flappybird-ql
+	url = https://github.com/JavaScriptIOT/flappybird-ql.git
+[submodule "第五章/synaptic"]
+	path = 第五章/synaptic
+	url = https://github.com/JavaScriptIOT/synaptic.git
+[submodule "第五章/convnetjs"]
+	path = 第五章/convnetjs
+	url = https://github.com/JavaScriptIOT/convnetjs.git

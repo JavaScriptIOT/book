@@ -1,0 +1,23 @@
+{
+  "name": "perceptron",
+  "description": "perceptron example",
+  "version": "0.0.1",
+  "keywords": [
+    "machine learning",
+    "perceptron"
+  ],
+  "homepage": "https://github.com/JavaScriptIOT/book",
+  "author": {
+    "name": "Zhizhou Li",
+    "email": "lizhizhou1983@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavaScriptIOT/book.git"
+  },
+  "main": "perceptron.js",
+  "dependencies": {
+    "synaptic": "*"
+  }
+}
