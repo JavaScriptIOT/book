@@ -3,8 +3,8 @@
   "description": "websocket mqtt client",
   "version": "0.0.1",
   "keywords": [
-    "html5",
-    "video"
+    "websocket",
+    "mqtt"
   ],
   "homepage": "https://github.com/JavaScriptIOT/book",
   "author": {
@@ -18,6 +18,6 @@
   },
   "main": "server.js",
   "dependencies": {
-    "livecam": "0.2.0"
+      "mqtt": "2.0.0"
   }
 }
