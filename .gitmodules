@@ -79,3 +79,6 @@
 [submodule "第一章/deepforge"]
 	path = 第一章/deepforge
 	url = https://github.com/deepforge-dev/deepforge
+[submodule "第一章/node-tensorflow"]
+	path = 第一章/node-tensorflow
+	url = https://github.com/node-tensorflow/node-tensorflow
