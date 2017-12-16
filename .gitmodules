@@ -37,3 +37,6 @@
 [submodule "第五章/convnetjs"]
 	path = 第五章/convnetjs
 	url = https://github.com/JavaScriptIOT/convnetjs.git
+[submodule "第一章/three.js"]
+	path = 第一章/three.js
+	url = https://github.com/mrdoob/three.js
