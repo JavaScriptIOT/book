@@ -1,8 +1,8 @@
 {
-  "name": "time",
+  "name": "adc",
   "version": "0.1.0",
-  "description": "time measure",
-  "main": "time.js",
+  "description": "ffi",
+  "main": "adc.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "url": "https://github.com/JavaScriptIOT/book.git"
   },
   "dependencies": {
-    "microtime": "^2.1.6"
+    "ffi": "^2.2.0"
   },
   "author": "Zhizhou Li",
   "license": "GPL",
