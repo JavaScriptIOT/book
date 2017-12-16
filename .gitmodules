@@ -61,3 +61,21 @@
 [submodule "第一章/eclairjs-node"]
 	path = 第一章/eclairjs-node
 	url = https://github.com/EclairJS/eclairjs-node
+[submodule "第一章/kibana"]
+	path = 第一章/kibana
+	url = https://github.com/elastic/kibana
+[submodule "第一章/machine_learning"]
+	path = 第一章/machine_learning
+	url = https://github.com/junku901/machine_learning
+[submodule "第一章/shaman"]
+	path = 第一章/shaman
+	url = https://github.com/luccastera/shaman
+[submodule "第一章/convnetjs"]
+	path = 第一章/convnetjs
+	url = https://github.com/karpathy/convnetjs
+[submodule "第一章/synaptic"]
+	path = 第一章/synaptic
+	url = https://github.com/cazala/synaptic
+[submodule "第一章/deepforge"]
+	path = 第一章/deepforge
+	url = https://github.com/deepforge-dev/deepforge
