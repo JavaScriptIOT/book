@@ -43,3 +43,9 @@
 [submodule "第一章/electron"]
 	path = 第一章/electron
 	url = https://github.com/electron/electron
+[submodule "第一章/nw.js"]
+	path = 第一章/nw.js
+	url = https://github.com/nwjs/nw.js
+[submodule "第一章/skale-engine"]
+	path = 第一章/skale-engine
+	url = https://github.com/skale-me/skale-engine
