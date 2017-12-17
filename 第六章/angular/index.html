@@ -1,13 +1,17 @@
-<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <meta charset="utf-8">
+    <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
 </head>
+
 <body>
-<div ng-app="iot">
-  <p>名字 : <input type="text" ng-model="name"></p>
-  <h1>Hello {{name}}</h1>
-</div>
+    <div ng-app="" ng-init="name='lizhizhou'">
+        <p>在输入框中尝试输入:</p>
+        <p>名字: <input type="text" ng-model="name"></p>
+        <p>Hello {{name}}</p>
+    </div>
 </body>
+
 </html>
