@@ -97,3 +97,6 @@
 [submodule "第九章/BlocklyIDE"]
 	path = 第九章/BlocklyIDE
 	url = https://github.com/OpenFPGAduino/BlocklyIDE.git
+[submodule "第六章/MobileApp"]
+	path = 第六章/MobileApp
+	url = https://github.com/OpenFPGAduino/MobileApp.git

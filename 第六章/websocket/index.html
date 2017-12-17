@@ -1,0 +1,26 @@
+<h1>Real Time</h1>
+<script src="https://cdn.bootcss.com/socket.io/1.3.1/socket.io.js"></script> <!-添加socket.io库->
+<script type="text/javascript">
+  var socket = io.connect('http://localhost:5000'); 
+    socket.on('connect', function () {
+      socket.on('mqtt', function (msg) { 
+        var elmarr=msg.topic.split("/");
+        var elm=elmarr[3];
+        console.log(msg.topic+' '+msg.payload);
+        var returntemp = document.getElementById("returntemp");
+        returntemp.innerHTML=msg.payload;
+      });
+     socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});       
+    });
+</script>
+<table style="background:gray;width: 500px">
+<tbody>
+<tr style="background:purple">
+<td colspan="2"><center>Status</center></td>
+</tr>
+<tr>
+<td>Return temp</td>
+<td id="returntemp"></td>
+</tr>
+</tbody>
+</table>
