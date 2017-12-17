@@ -8,11 +8,11 @@
 <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"> 
 </canvas>
 <script>
-var c=document.getElementById("myCanvas");//获取canvas元素引用
-var ctx=c.getContext("2d"); //获取2D绘图板，目前canvas仅支持2D绘图不支持3D
-ctx.moveTo(0,0);   //将坐标移动到0,0位置
-ctx.lineTo(200,100); //从0，0位置绘制一条到200，100位置的线
-ctx.stroke(); //触发实际绘制动作
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d"); 
+ctx.moveTo(0,0);   
+ctx.lineTo(200,100); 
+ctx.stroke(); 
 </script>
 </body>
 </html>

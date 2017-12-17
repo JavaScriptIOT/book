@@ -13,10 +13,7 @@
     <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
     <div id="main" style="width: 1024px;height:1024px;"></div>
     <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
-
-        // 指定图表的配置项和数据
         option = {
             backgroundColor: '#fff',
             visualMap: {
@@ -57,7 +54,6 @@
                 }
             }]
         }
-        // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
 </body>
