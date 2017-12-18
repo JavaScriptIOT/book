@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5</title>
+</head>
+<script type="text/javascript">
+sessionStorage.lastname="Smith";
+document.write(sessionStorage.lastname);
+if (sessionStorage.pagecount)
+  {
+  sessionStorage.pagecount=Number(sessionStorage.pagecount) +1;
+  }
+else
+  {
+  sessionStorage.pagecount=1;
+  }
+document.write("Visits "+sessionStorage.pagecount+" time(s) this session.");
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5</title>
+</head>
+<script type="text/javascript">
+localStorage.lastname="Smith";
+document.write(localStorage.lastname);
+if (localStorage.pagecount)
+  {
+  localStorage.pagecount=Number(localStorage.pagecount) +1;
+  }
+else
+  {
+  localStorage.pagecount=1;
+  }
+document.write("Visits "+ localStorage.pagecount + " time(s).");   
+</script>
+<body>
+
+</body>
+</html>

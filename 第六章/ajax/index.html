@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5</title>
+</head>
+<script type="text/javascript">
+<script type="text/javascript">
+function ajax_post(url, json) {
+    var xhr = new XMLHttpRequest(); //获得XMLHttpRequest对象
+    var post;
+    xhr.open("post", url, false); //打开JAXA的HTTP链接
+    xhr.setRequestHeader("Content-Type", "application/json");
+    //设置及HTTP的传输内容是json字符串
+    xhr.send(JSON.stringify(json));
+    if (xhr.readyState==4 && xhr.status==200)
+    // 当 readyState 等于 4 且状态为 200 时，表示响应已就绪
+    	return (JSON.parse(xhr.responseText));
+     //解析服务器端传来的json数据
+    else
+        return null;
+}
+function ajax_get(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", url, false);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send();
+    if (xhr.readyState==4 && xhr.status==200) {
+        var json = JSON.parse(xhr.responseText)
+        return (json);
+    }
+    else 
+        return null;
+}
+function ajax_delete(url, json) {
+    var xhr = new XMLHttpRequest();
+    var post;
+    xhr.open("delete", url, false);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(json));
+    debuginf(xhr.status);
+}
+</script>
+</script>
+<body>
+
+</body>
+</html>

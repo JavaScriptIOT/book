@@ -1,0 +1,23 @@
+<html>
+<head>
+<script type="text/javascript">
+var xhr = new XMLHttpRequest();
+function callback()
+{
+    if (xhr.readyState==4 && xhr.status==200)
+    console.log(JSON.parse(xhr.responseText));
+    else
+        console.log("error");
+}
+function ajax_post_a(url, json, callback) {
+    var post;
+    xhr.open("post", url, false);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(json));
+}
+</script>
+</head>
+<body>
+<button type="button" onclick="ajax_post_a("localhost","{message:test}", callback)">test</button>
+</body>
+</html>
