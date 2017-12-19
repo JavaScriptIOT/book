@@ -100,3 +100,6 @@
 [submodule "第六章/MobileApp"]
 	path = 第六章/MobileApp
 	url = https://github.com/OpenFPGAduino/MobileApp.git
+[submodule "第八章/fpga"]
+	path = 第八章/fpga
+	url = https://github.com/OpenFPGAduino/fpga.git
