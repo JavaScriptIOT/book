@@ -103,3 +103,9 @@
 [submodule "第八章/fpga"]
 	path = 第八章/fpga
 	url = https://github.com/OpenFPGAduino/fpga.git
+[submodule "第九章/FPGAdesigner"]
+	path = 第九章/FPGAdesigner
+	url = https://github.com/OpenFPGAduino/FPGAdesigner.git
+[submodule "第九章/ArduinoIDE"]
+	path = 第九章/ArduinoIDE
+	url = https://github.com/OpenFPGAduino/ArduinoIDE.git
