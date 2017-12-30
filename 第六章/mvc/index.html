@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
-
+    <meta charset="utf-8">
+    <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
 </head>
 <body>
-<div ng-app="myApp" ng-controller="personCtrl">
-名: <input type="text" ng-model="firstName"><br>
-姓: <input type="text" ng-model="lastName"><br>
-<br>
-姓名: {{fullName()}}
-</div>
-<script src="personcontroller.js"></script>
-<script>
+    <div ng-app="myApp" ng-controller="personCtrl">
+        名: <input type="text" ng-model="firstName"><br> 姓: <input type="text" ng-model="lastName"><br>
+        <br> 姓名: {{fullName()}}
+    </div>
+    <script src="personcontroller.js"></script>
+    <script>
 </script>
 </body>
 </html>
