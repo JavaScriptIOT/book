@@ -1,7 +1,7 @@
 var kafka = require('kafka-node'),
 	HighLevelConsumer = kafka.HighLevelConsumer,
 	kafkaclient = new kafka.Client();
-HighLevelProducer = kafka.HighLevelProducer,
+	HighLevelProducer = kafka.HighLevelProducer,
 	producer = new HighLevelProducer(kafkaclient);
 var mosca = require('mosca');
 var moscaSettings = {
